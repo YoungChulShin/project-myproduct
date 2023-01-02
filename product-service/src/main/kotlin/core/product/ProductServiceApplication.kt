@@ -1,11 +1,11 @@
-package project.msa.myproduct
+package core.product
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class MyProductApplication
+class ProductServiceApplication
 
 fun main(args: Array<String>) {
-    runApplication<MyProductApplication>(*args)
+    runApplication<ProductServiceApplication>(*args)
 }
