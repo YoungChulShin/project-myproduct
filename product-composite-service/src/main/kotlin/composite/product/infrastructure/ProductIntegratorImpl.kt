@@ -10,6 +10,7 @@ import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpMethod
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
+import util.exceptions.NotFoundException
 
 @Component
 class ProductIntegratorImpl(
@@ -20,7 +21,7 @@ class ProductIntegratorImpl(
 
     override fun getProduct(productId: Int): Product {
         val url = serverConnectionConfig.productService.getUrl("product/${productId}")
-        return restTemplate.getForObject(url, Product::class.java)!!
+        return restTemplate.getForObject(url, Product::class.java) ?: throw NotFoundException()
     }
 
     override fun getRecommendations(productId: Int): List<Recommendation> {
