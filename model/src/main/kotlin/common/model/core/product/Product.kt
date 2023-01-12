@@ -5,4 +5,6 @@ data class Product(
     val name: String,
     val weight: Int,
     val serviceAddress: String,
-)
+) {
+    private constructor(): this(-1, "", -1, "")
+}
