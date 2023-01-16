@@ -4,6 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import common.model.core.product.Product
 import common.model.core.recommendation.Recommendation
 import common.model.core.review.Review
+import common.model.error.exceptions.InvalidInputException
+import common.model.error.exceptions.NotFoundException
+import common.model.error.http.HttpErrorInfo
 import composite.product.config.ServerConnectionConfig
 import composite.product.domain.ProductIntegrator
 import org.slf4j.LoggerFactory
@@ -13,9 +16,6 @@ import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
 import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.client.RestTemplate
-import util.exceptions.InvalidInputException
-import util.exceptions.NotFoundException
-import util.http.HttpErrorInfo
 import java.io.IOException
 
 @Component
@@ -30,8 +30,20 @@ class ProductIntegratorImpl(
     }
 
     override fun getProduct(productId: Int): Product {
-        val url = serverConnectionConfig.productService.getUrl("product/${productId}")
-        return restTemplate.getForObject(url, Product::class.java) ?: throw NotFoundException()
+        try {
+            val url = serverConnectionConfig.productService.getUrl("product/${productId}")
+            return restTemplate.getForObject(url, Product::class.java) ?: throw NotFoundException()
+        } catch (ex: HttpClientErrorException) {
+            when(ex.statusCode) {
+                HttpStatus.NOT_FOUND -> throw NotFoundException(getErrorMessage(ex))
+                HttpStatus.UNPROCESSABLE_ENTITY -> throw InvalidInputException(getErrorMessage(ex))
+                else -> {
+                    logger.warn("Got a unexpected HTTP error: {}, will rethrow it", ex.statusCode)
+                    logger.warn("Error body: {}", ex.responseBodyAsString)
+                    throw ex
+                }
+            }
+        }
     }
 
     override fun getRecommendations(productId: Int): List<Recommendation> {
