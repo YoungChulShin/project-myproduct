@@ -1,9 +1,9 @@
 package core.product.service
 
 import common.model.core.product.Product
+import common.model.error.exceptions.InvalidInputException
+import common.model.error.exceptions.NotFoundException
 import org.springframework.stereotype.Service
-import util.exceptions.InvalidInputException
-import util.exceptions.NotFoundException
 import util.http.ServiceUtil
 
 @Service

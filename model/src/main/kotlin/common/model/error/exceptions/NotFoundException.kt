@@ -1,4 +1,4 @@
-package util.exceptions
+package common.model.error.exceptions
 
 class NotFoundException : RuntimeException {
 

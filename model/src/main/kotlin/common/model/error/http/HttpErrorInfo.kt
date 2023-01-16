@@ -1,10 +1,9 @@
-package util.http
+package common.model.error.http
 
-import org.springframework.http.HttpStatus
 import java.time.ZonedDateTime
 
 class HttpErrorInfo(
-    val httpStatus: HttpStatus,
+    val httpStatus: Int,
     val path: String,
     val message: String,
 ) {

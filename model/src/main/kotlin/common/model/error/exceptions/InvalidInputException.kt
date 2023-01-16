@@ -1,11 +1,9 @@
-package util.exceptions
+package common.model.error.exceptions
 
-class EventProcessingException: RuntimeException {
+class InvalidInputException: RuntimeException {
 
     constructor() : super()
     constructor(message: String) : super(message)
     constructor(message: String, cause: Throwable) : super(message, cause)
     constructor(cause: Throwable) : super(cause)
-
-
 }
