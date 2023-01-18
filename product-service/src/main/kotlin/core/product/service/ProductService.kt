@@ -17,4 +17,5 @@ class ProductService(
 
         return Product(productId, "name-${productId}", 123, serviceUtil.getServiceAddress())
     }
+
 }
