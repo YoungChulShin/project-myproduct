@@ -56,4 +56,9 @@ subprojects {
     tasks.withType<Test> {
         useJUnitPlatform()
     }
+
+    // https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#packaging-executable.and-plain-archives
+    tasks.named<Jar>("jar") {
+        enabled = false
+    }
 }
