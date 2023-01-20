@@ -26,9 +26,6 @@ subprojects {
     apply(plugin = "kotlin-kapt")
 
     dependencies {
-//        implementation(project(":model"))
-//        implementation(project(":util"))
-
         implementation("org.springframework.boot:spring-boot-starter")
 
         implementation("org.jetbrains.kotlin:kotlin-reflect")
