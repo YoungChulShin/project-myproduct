@@ -7,4 +7,6 @@ data class Review(
     val subject: String,
     val content: String,
     val serviceAddress: String,
-)
+) {
+    private constructor(): this(-1, -1, "", "", "", "")
+}

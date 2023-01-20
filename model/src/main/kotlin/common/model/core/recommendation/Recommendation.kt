@@ -7,4 +7,6 @@ data class Recommendation(
     val rate: Int,
     val content: String,
     val serviceAddress: String,
-)
+) {
+    private constructor() : this(-1, -1, "", -1, "", "")
+}
