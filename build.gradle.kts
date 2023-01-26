@@ -19,14 +19,21 @@ allprojects {
     }
 }
 
+
+
 subprojects {
     apply(plugin = "kotlin")
     apply(plugin = "kotlin-spring")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "kotlin-kapt")
 
+    val mapstructVersion = "1.5.3.Final"
+
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter")
+
+        implementation("org.mapstruct:mapstruct:$mapstructVersion")
+        annotationProcessor("org.mapstruct:mapstruct:$mapstructVersion")
 
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
