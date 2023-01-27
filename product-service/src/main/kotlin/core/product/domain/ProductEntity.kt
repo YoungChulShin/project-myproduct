@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.index.Indexed
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collation = "products")
-class ProductEnity(
+class ProductEntity(
     @Indexed(unique = true)
     val productId: Int,
     var name: String,
@@ -17,5 +17,4 @@ class ProductEnity(
 
     @Version
     var version: Int? = null
-
 }
