@@ -16,8 +16,6 @@ class ReviewEntity(
     var content: String,
 ) {
 
-    protected constructor(): this(-1, -1, "", "", "")
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null
