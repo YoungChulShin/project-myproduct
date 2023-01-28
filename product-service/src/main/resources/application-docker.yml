@@ -5,3 +5,6 @@ spring:
   config:
     activate:
       on-profile: docker
+  data:
+    mongodb:
+      host: mongodb

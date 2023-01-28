@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  mongodb:
+    image: mongo:4.4.19-rc0
+    deploy:
+      resources:
+        limits:
+          memory: 350m
+    ports:
+      - "27017:27017"

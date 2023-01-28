@@ -31,7 +31,7 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-starter")
 
         implementation("org.mapstruct:mapstruct:$mapstructVersion")
-        annotationProcessor("org.mapstruct:mapstruct:$mapstructVersion")
+        kapt("org.mapstruct:mapstruct-processor:$mapstructVersion")
 
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
